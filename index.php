@@ -50,6 +50,7 @@ body, td, p {
 <table cellspacing="0" cellpadding="0" border="0">
 <?
 $months = array('января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря', '13');
+$maxlines = 10;
 foreach( file("changelog.txt") as $logline ) {
 	if( preg_match('/^@(\d+),\s*(\d+)\.(\d+):\s*(.+?)\s*$/', $logline, $matches) ) {
 		$id = $matches[1];
@@ -58,7 +59,7 @@ foreach( file("changelog.txt") as $logline ) {
 		?>
 <tr><td valign="top" style="padding-right: 8px;"><a href="http://josm.openstreetmap.de/changeset/<?=$id?>/josm/">@<?=$id?></a><br><span class="changedate"><?=$date?></span></td>
 <td valign="top"><?=$text?></td></tr>
-<?		
+<?		if( --$maxlines <= 0 ) break;
 	}
 }
 ?>
