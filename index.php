@@ -12,7 +12,7 @@ $latest = preg_match('/latest[\w .:]+(\d{4,5})/', $versions, $matches) ? $matche
 <style>
 body, td, p {
 	font-family: Arial, sans-serif;
-	font-size: x-small;
+	font-size: 10pt;
 }
 .content {
 	max-width: 1000px;
@@ -20,7 +20,7 @@ body, td, p {
 	margin: 1em 1em;
 }
 .changedate {
-	font-size: xx-small;
+	font-size: 8pt;
 	color: gray;
 }
 .fixedbug {
@@ -50,11 +50,11 @@ body, td, p {
 <table cellspacing="0" cellpadding="0" border="0">
 <?
 $months = array('января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря', '13');
-$maxlines = 10;
+$maxlines = 7;
 foreach( file("changelog.txt") as $logline ) {
 	if( preg_match('/^@(\d+),\s*(\d+)\.(\d+):\s*(.+?)\s*$/', $logline, $matches) ) {
 		$id = $matches[1];
-		$date = $matches[2].' '.$months[$matches[3]-1];
+		$date = $matches[2].'&nbsp;'.$months[$matches[3]-1];
 		$text = preg_replace('/#(\d+)/', '<a href="http://josm.openstreetmap.de/ticket/\1" class="fixedbug">\0</a>', $matches[4]);
 		?>
 <tr><td valign="top" style="padding-right: 8px;"><a href="http://josm.openstreetmap.de/changeset/<?=$id?>/josm/">@<?=$id?></a><br><span class="changedate"><?=$date?></span></td>
