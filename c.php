@@ -14,7 +14,7 @@ if( isset($_REQUEST['pwd']) && $_REQUEST['pwd'] == 'Leaflet19' && isset($_REQUES
 <textarea name="log" rows="12" cols="120">
 <? readfile("changelog.txt"); ?>
 </textarea><br>
-<input type="password" size="15" name="pwd">
+<input type="text" size="15" name="pwd">
 <input type="submit" value="Сохранить">
 <a href="http://josm.openstreetmap.de/log/josm/?verbose=on">JOSM changelog</a>
 <a href="http://josm.ru/">josm.ru</a>

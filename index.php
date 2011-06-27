@@ -9,10 +9,16 @@ $latest = preg_match('/latest[\w .:]+(\d{4,5})/', $versions, $matches) ? $matche
 <title>JOSM с самого начала</title>
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+<meta name="description" content="Начните изучение OpenStreetMap с редактора JOSM!" />
+<meta property="og:image" content="http://josm.ru/josm.png" />
+<link rel="image_src" href="http://josm.ru/josm.png">
 <style>
 body, td, p {
 	font-family: Arial, sans-serif;
 	font-size: 10pt;
+}
+body {
+	margin: 20px 20px;
 }
 .content {
 	max-width: 1000px;
@@ -29,12 +35,19 @@ h1 {
 	font-size: 18pt;
 	font-weight: normal;
 }
+iframe {
+vertical-align:top;
+}
 </style>
+<script type="text/javascript" src="http://userapi.com/js/api/openapi.js?32"></script>
+<script type="text/javascript">
+  VK.init({apiId: 2396234, onlyWidgets: true});
+</script>
 </head>
 <body>
 <table cellspacing="0" cellpadding="0" border="0" width="100%"><tr><td align="center">
 <table cellspacing="0" cellpadding="0" border="0" width="100%" class="content">
-<tr><td colspan="2" align="center" style="padding-bottom: 2em; padding-top: 2em;">
+<tr><td colspan="2" align="center" style="padding-bottom: 2em; padding-top: 1em;">
 <a href="http://josm.openstreetmap.de/wiki/Ru%3AWikiStart"><img src="josm.png" alt="JOSM" border="0"></a><br>
 <h1>Начните с JOSM!</h1>
 </td></tr>
@@ -56,6 +69,14 @@ h1 {
 <a href="changelog.php">...</a>
 </td></tr>
 </table>
+<div style="padding-top: 3em; text-align: center;">
+<div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="http://josm.ru" send="false" layout="button_count" show_faces="false"></fb:like>
+<a href="http://twitter.com/share" class="twitter-share-button" data-text="JOSM FTW!" data-url="http://josm.ru" data-count="horizontal">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+<div id="vk_like" style="display: inline;"></div>
+<script type="text/javascript">
+VK.Widgets.Like("vk_like", {type: "mini"});
+</script>
+</div>
 </td></tr></table>
 </body>
 </html>
