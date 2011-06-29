@@ -6,7 +6,7 @@ $latest = preg_match('/latest[\w .:]+(\d{4,5})/', $versions, $matches) ? $matche
 ?>
 <html>
 <head>
-<title>Начните с JOSM!</title>
+<title>JOSM с самого начала</title>
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 <meta name="description" content="Начните изучение OpenStreetMap с редактора JOSM!" />
