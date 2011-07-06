@@ -17,6 +17,7 @@ body, td, p {
 </style>
 </head>
 <body>
+<p><a href="http://josm.openstreetmap.de/log/josm/?verbose=on">Список изменений на официальном сайте</a></p>
 <? include('changes.php'); ?>
 <p><a href="/">Вернуться на josm.ru</a></p>
 </body>
