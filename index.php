@@ -35,6 +35,9 @@ h1 {
 	font-size: 18pt;
 	font-weight: normal;
 }
+.download {
+	font-weight: bold;
+}
 iframe {
 vertical-align:top;
 }
@@ -56,8 +59,8 @@ vertical-align:top;
 <? include("tutorial.html"); ?>
 </td>
 <td align="right" valign="top">
-<a href="http://gis-lab.info/programs/josm/josm-tested.jar">Загрузить стабильную версию <?=$tested ?></a><br>
-<a href="http://josm.openstreetmap.de/josm-latest.jar">или версию в разработке <?=$latest ?></a><br>
+<a class="download" href="http://gis-lab.info/programs/josm/josm-tested.jar">Загрузить стабильную версию <?=$tested ?></a><br>
+<a class="download" href="http://josm.openstreetmap.de/josm-latest.jar">или версию в разработке <?=$latest ?></a><br>
 <br>
 Установщики под <a href="http://gis-lab.info/programs/josm/windows/josm-setup.exe">Windows</a>, <a href="http://gis-lab.info/programs/josm/macosx/josm-macosx.zip">Mac OS X</a><br>
 <a href="http://gis-lab.info/programs/josm/josm.jnlp">Запустить</a> прямо сразу (через Java WebStart)
