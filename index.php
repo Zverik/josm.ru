@@ -39,12 +39,25 @@ h1 {
 	font-weight: bold;
 }
 iframe {
-vertical-align:top;
+	vertical-align:top;
+}
+.google1 {
+	display: inline-block;
+	height: 20px;
+	overflow: hidden;
+}
+.facebooklike {
+	display: inline-block;
+	height: 20px;
+	vertical-align: top;
 }
 </style>
 <script type="text/javascript" src="http://userapi.com/js/api/openapi.js?32"></script>
 <script type="text/javascript">
   VK.init({apiId: 2396234, onlyWidgets: true});
+</script>
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">
+  {lang: 'ru'}
 </script>
 </head>
 <body>
@@ -73,8 +86,9 @@ vertical-align:top;
 </td></tr>
 </table>
 <div style="padding-top: 3em; text-align: center;">
-<div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="http://josm.ru" send="false" layout="button_count" show_faces="false"></fb:like>
+<div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><div class="facebooklike"><fb:like href="http://josm.ru" send="false" layout="button_count" show_faces="false"></fb:like></div>
 <a href="http://twitter.com/share" class="twitter-share-button" data-text="JOSM FTW!" data-url="http://josm.ru" data-count="horizontal">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+<div class="google1"><g:plusone size="medium"></g:plusone></div>
 <div id="vk_like" style="display: inline;"></div>
 <script type="text/javascript">
 VK.Widgets.Like("vk_like", {type: "mini"});
