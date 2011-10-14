@@ -18,7 +18,7 @@ foreach( file("changelog.txt") as $logline ) {
 		$date = $matches[2].'&nbsp;'.$months[$matches[3]-1];
 		?>
 <tr><td valign="top" style="padding-right: 8px; background: #eeeeff;"><b>@<?=$id?></b><br><span class="changedate"><?=$date?></span></td>
-<td valign="top" style="background: #eeeeff;"><b>Стабильная версия</b></td></tr>
+<td valign="top" style="background: #eeeeff;"><b>стабильная версия</b></td></tr>
 <?		if( --$maxlines <= 0 ) break;
 	}
 }
