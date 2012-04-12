@@ -70,8 +70,8 @@ h1 {
 <? include("tutorial.html"); ?>
 </td>
 <td align="right" valign="top">
-<a class="download" href="http://gis-lab.info/programs/josm/josm-tested.jar">Загрузить стабильную версию <?=$tested ?></a><br>
-<a class="download" href="http://josm.openstreetmap.de/josm-latest.jar">или версию в разработке <?=$latest ?></a><br>
+<span class="download"><a href="http://gis-lab.info/programs/josm/josm-tested.jar">Загрузить стабильную версию <?=$tested ?></a><br>
+или <a href="http://josm.openstreetmap.de/josm-latest.jar">версию в разработке <?=$latest ?></a></span><br>
 <br>
 Установщики под <a href="http://gis-lab.info/programs/josm/windows/josm-setup.exe">Windows</a>, <a href="http://gis-lab.info/programs/josm/macosx/josm-macosx.zip">Mac OS X</a><br>
 <a href="http://gis-lab.info/programs/josm/josm.jnlp">Запустить</a> прямо сразу (через Java WebStart)
