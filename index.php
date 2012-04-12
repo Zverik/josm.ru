@@ -1,8 +1,8 @@
 <?
 header("Content-Type: text/html; charset=utf-8");
 $versions = file_get_contents("version");
-$tested = preg_match('/tested[\w .:]+(\d{4,5})/', $versions, $matches) ? $matches[1] : 'X3';
-$latest = preg_match('/latest[\w .:]+(\d{4,5})/', $versions, $matches) ? $matches[1] : 'X3';
+$tested = preg_match('/tested[\w .:]+(\d{4,5})/', $versions, $matches) ? $matches[1] : '';
+$latest = preg_match('/latest[\w .:]+(\d{4,5})/', $versions, $matches) ? $matches[1] : '';
 ?>
 <html>
 <head>
@@ -37,6 +37,7 @@ h1 {
 }
 .download {
 	font-weight: bold;
+	font-size: 11pt;
 }
 .socialbuttons {
 	padding-top: 3em;
