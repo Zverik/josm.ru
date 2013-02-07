@@ -17,9 +17,9 @@ body, td, p {
 </style>
 </head>
 <body>
+<p><a href="/">Вернуться на josm.ru</a></p>
 <p><a href="http://josm.openstreetmap.de/log/josm/?verbose=on">Список изменений на официальном сайте</a></p>
 <? include('changes.php'); ?>
-<p><a href="/">Вернуться на josm.ru</a></p>
 <script type="text/javascript">
 var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.textual.ru/" : "http://piwik.textual.ru/");
 document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
