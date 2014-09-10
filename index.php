@@ -1,8 +1,8 @@
-<?
+<?php
 header("Content-Type: text/html; charset=utf-8");
-$versions = file_get_contents("version");
-$tested = preg_match('/tested[\w .:]+(\d{4,5})/', $versions, $matches) ? $matches[1] : '';
-$latest = preg_match('/latest[\w .:]+(\d{4,5})/', $versions, $matches) ? $matches[1] : '';
+$versions = @file_get_contents("version");
+$tested = preg_match('/tested[\w .:]+(\d{4,5})/', $versions, $matches) ? $matches[1] : '0000';
+$latest = preg_match('/latest[\w .:]+(\d{4,5})/', $versions, $matches) ? $matches[1] : '0000';
 ?>
 <html>
 <head>
@@ -14,32 +14,73 @@ $latest = preg_match('/latest[\w .:]+(\d{4,5})/', $versions, $matches) ? $matche
 <link rel="image_src" href="http://josm.ru/josm.png">
 <style>
 body, td, p {
-	font-family: Arial, sans-serif;
-	font-size: 10pt;
+	font-family: "PT Sans", "Helvetica", sans-serif;
+	font-size: 14px;
 }
 body {
 	margin: 20px 20px;
+	background-color: #eeeeee;
 }
-.content {
-	max-width: 1000px;
-	align: center;
+#header {
+	text-align: center;
+	padding: 100px 0;
+	height: 400px;
+}
+#changelog {
+	float: right;
+	width: 230px;
+}
+#changelog td {
+	font-size: 12px;
+	line-height: 1.1;
 }
 .changedate {
-	font-size: 8pt;
+	font-size: 10px;
 	color: gray;
 }
 .fixedbug {
 	text-decoration: line-through;
 }
+.vstable {
+	background-color: #FFFEC5;
+}
 h1 {
-	font-size: 18pt;
+	font-size: 60px;
 	font-weight: normal;
+	font-family: "PT Sans Caption", "Verdana", sans-serif;
+	margin: 0 0 70px;
 }
-.download {
+h1 a {
+	color: inherit;
+	text-decoration: none;
+}
+#downloads {
+	font-size: 24px;
+	line-height: 1.5;
+}
+#downloads a {
+	display: inline-block;
+	margin-bottom: 4px;
+	color: blue;
+}
+#downloads .stable {
+	background-color: blue;
+	color: white;
 	font-weight: bold;
-	font-size: 11pt;
+	padding: 2px 10px;
 }
-.socialbuttons {
+#downloads .installers {
+	font-size: 14px;
+}
+#video {
+	text-align: center;
+}
+#tutorial {
+	width: 800px;
+	margin: 0 auto;
+	padding-top: 100px;
+}
+#social {
 	padding-top: 3em;
 	text-align: center;
 	vertical-align: top;
@@ -59,31 +100,33 @@ h1 {
 </script>
 </head>
 <body>
-<table cellspacing="0" cellpadding="0" border="0" width="100%"><tr><td align="center">
-<table cellspacing="0" cellpadding="0" border="0" width="100%" class="content">
-<tr><td colspan="2" align="center" style="padding-bottom: 2em; padding-top: 1em;">
-<a href="http://josm.openstreetmap.de/wiki/Ru%3AWikiStart"><img src="josm.png" alt="JOSM" border="0"></a><br>
-<h1>Начните с JOSM!</h1>
-</td></tr>
-<tr>
-<td align="left" valign="top" rowspan="2" style="padding-right: 2em; width: 70%;">
-<? include("tutorial.html"); ?>
-</td>
-<td align="right" valign="top">
-<span class="download"><a href="http://gis-lab.info/programs/josm/josm-tested.jar">Загрузить стабильную версию <?=$tested ?></a><br>
-или <a href="http://josm.openstreetmap.de/josm-latest.jar">версию в разработке <?=$latest ?></a></span><br>
-<br>
-Установщики под <a href="http://gis-lab.info/programs/josm/windows/josm-setup.exe">Windows</a>, <a href="http://gis-lab.info/programs/josm/macosx/josm-macosx.zip">Mac OS X</a><br>
-<a href="http://gis-lab.info/programs/josm/josm.jnlp">Запустить</a> прямо сразу (через Java WebStart)
-</td>
-</tr>
-<tr><td align="left" valign="bottom" style="padding-top: 2em;">
+
+<div id="header">
+<div id="changelog">
 <p>Что изменилось:</p>
-<? $maxlines = 7; include('changes.php'); ?>
+<?php $maxlines = 7; include('changes.php'); ?>
 <a href="changelog.php">...</a>
-</td></tr>
-</table>
-<div class="socialbuttons">
+</div>
+
+<h1>Начните с <a href="http://josm.openstreetmap.de/wiki/Ru%3AWikiStart">JOSM</a>!</h1>
+<div id="downloads">
+<a class="stable" href="http://gis-lab.info/programs/josm/josm-tested.jar">Загрузить стабильную версию <?=$tested ?></a><br>
+<span class="installers">Установщики для <a href="http://gis-lab.info/programs/josm/windows/josm-setup.exe">Windows</a>,
+<a href="http://gis-lab.info/programs/josm/macosx/josm-macosx.zip">Mac OS X</a>;
+<a href="http://gis-lab.info/programs/josm/josm.jnlp">запустить в WebStart</a></span><br>
+<a href="http://josm.openstreetmap.de/josm-latest.jar">Версия в разработке <?=$latest ?></a>
+</div>
+</div>
+
+<div id="video">
+<iframe style="width: 100%; max-width: 1280px; height: 720px;" src="//www.youtube.com/embed/t7UdJrX8nGM?vq=hd720&rel=0" frameborder="0" allowfullscreen></iframe>
+</div>
+
+<div id="tutorial">
+<?php include("tutorial.html"); ?>
+</div>
+
+<div id="social">
 <div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><div class="google1"><fb:like href="http://josm.ru" send="false" layout="button_count" show_faces="false"></fb:like></div>
 <a href="http://twitter.com/share" class="twitter-share-button" data-text="JOSM FTW!" data-url="http://josm.ru" data-count="horizontal">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 <div class="google1"><g:plusone size="medium"></g:plusone></div>
@@ -92,7 +135,7 @@ h1 {
 VK.Widgets.Like("vk_like", {type: "mini"});
 </script>
 </div>
-</td></tr></table>
+
 <script type="text/javascript">
 var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.textual.ru/" : "http://piwik.textual.ru/");
 document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));

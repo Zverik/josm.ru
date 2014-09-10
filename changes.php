@@ -1,5 +1,5 @@
 <table cellspacing="0" cellpadding="0" border="0">
-<?
+<?php
 $months = array('января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря', '13');
 if( !isset($maxlines) )
 	$maxlines = 100;
@@ -16,14 +16,14 @@ foreach( file("changelog.txt") as $logline ) {
 		?>
 <tr><td valign="top" style="padding-right: 8px;"><a href="http://josm.openstreetmap.de/changeset/<?=$id?>/josm/">@<?=$id?></a><br><span class="changedate"><?=$date?></span></td>
 <td valign="top"><?=$text?></td></tr>
-<?		if( --$maxlines <= 0 ) break;
+<?php		if( --$maxlines <= 0 ) break;
 	} elseif( preg_match('/^!(\d+),\s*(\d+)\.(\d+)\s*$/', $logline, $matches) ) {
 		$id = $matches[1];
 		$date = $matches[2].'&nbsp;'.$months[$matches[3]-1];
 		?>
-<tr><td valign="top" style="padding-right: 8px; background: #eeeeff;"><b>@<?=$id?></b><br><span class="changedate"><?=$date?></span></td>
-<td valign="top" style="background: #eeeeff;"><b>стабильная версия</b></td></tr>
-<?		if( --$maxlines <= 0 ) break;
+<tr><td valign="top" class="vstable" style="padding-right: 8px;"><b>@<?=$id?></b><br><span class="changedate"><?=$date?></span></td>
+<td valign="top" class="vstable"><b>стабильная версия</b></td></tr>
+<?php		if( --$maxlines <= 0 ) break;
 	}
 }
 ?>
