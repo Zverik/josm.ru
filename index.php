@@ -3,13 +3,20 @@ header("Content-Type: text/html; charset=utf-8");
 $versions = @file_get_contents("version");
 $tested = preg_match('/tested[\w .:]+(\d{4,5})/', $versions, $matches) ? $matches[1] : '0000';
 $latest = preg_match('/latest[\w .:]+(\d{4,5})/', $versions, $matches) ? $matches[1] : '0000';
+$user_agent = strtolower($_SERVER['HTTP_USER_AGENT']);
+if( strpos($user_agent, 'win') !== false || strpos($user_agent, 'msie') !== false )
+    $platform = 'windows';
+elseif( strpos($user_agent, 'mac') !== false )
+    $platform = 'mac';
+else
+    $platform = 'jar';
 ?>
 <html>
 <head>
 <title>JOSM с самого начала</title>
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-<meta name="description" content="Начните изучение OpenStreetMap с редактора JOSM!" />
+<meta name="description" content="Начните изучение OpenStreetMap с редактора JOSM! Свежая версия, видеоурок и полезные ссылки." />
 <meta property="og:image" content="http://josm.ru/josm.png" />
 <link rel="image_src" href="http://josm.ru/josm.png">
 <style>
@@ -24,7 +31,7 @@ body {
 #header {
 	text-align: center;
 	padding: 100px 0;
-	height: 400px;
+	height: 300px;
 }
 #changelog {
 	float: right;
@@ -72,6 +79,24 @@ h1 a {
 #downloads .installers {
 	font-size: 14px;
 }
+#cards {
+    list-style-type: none;
+    margin: 0 0 50px;
+    padding: 0;
+    text-align: center;
+}
+#cards li {
+    display: inline;
+}
+#cards a {
+    padding: 12pt 8pt;
+    display: inline-block;
+    width: 10em;
+    vertical-align: middle;
+}
+#cards a:hover {
+    background: #f4f4f4;
+}
 #video {
 	text-align: center;
 }
@@ -110,13 +135,31 @@ h1 a {
 
 <h1>Начните с <a href="http://josm.openstreetmap.de/wiki/Ru%3AWikiStart">JOSM</a>!</h1>
 <div id="downloads">
-<a class="stable" href="http://gis-lab.info/programs/josm/josm-tested.jar">Загрузить стабильную версию <?=$tested ?></a><br>
+<?php if ($platform == 'windows'): ?>
+<a class="stable" href="http://gis-lab.info/programs/josm/windows/josm-setup.exe">Загрузить версию <?=$tested ?> для Windows</a>
+<?php elseif ($platform == 'mac'): ?>
+<a class="stable" href="http://gis-lab.info/programs/josm/macosx/josm-macosx.zip">Загрузить версию <?=$tested ?> для Mac OS X</a>
+<?php else: ?>
+<a class="stable" href="http://gis-lab.info/programs/josm/josm-tested.jar">Загрузить стабильную версию <?=$tested ?></a>
+<?php endif ?>
+<br>
 <span class="installers">Установщики для <a href="http://gis-lab.info/programs/josm/windows/josm-setup.exe">Windows</a>,
 <a href="http://gis-lab.info/programs/josm/macosx/josm-macosx.zip">Mac OS X</a>;
-<a href="http://gis-lab.info/programs/josm/josm.jnlp">запустить в WebStart</a></span><br>
+<a href="http://gis-lab.info/programs/josm/josm.jnlp">запустить в WebStart</a>,
+<a href="http://gis-lab.info/programs/josm/josm-tested.jar">скачать jar</a>
+</span><br>
 <a href="http://josm.openstreetmap.de/josm-latest.jar">Версия в разработке <?=$latest ?></a>
 </div>
 </div>
+
+<ul id="cards">
+<li><a href="http://java.com/ru/download/index.jsp">Вам понадобится Java, тут установщик</a></li>
+<li><a href="http://wiki.openstreetmap.org/wiki/RU:JOSM/Guide">Подробный слегка устаревший учебник</a></li>
+<li><a href="http://wiki.openstreetmap.org/wiki/RU:JOSM/FAQ">Часто задаваемые вопросы</a></li>
+<li><a href="http://wiki.openstreetmap.org/wiki/RU:Map_Features">Большой справочник по тегам</a></li>
+<li><a href="http://wiki.openstreetmap.org/wiki/RU:ВикиПроект_Россия">Рекомендации для рисующих в России</a></li>
+<li><a href="http://forum.openstreetmap.org/viewtopic.php?id=2714">Тема про JOSM на форуме</a></li>
+</ul>
 
 <div id="video">
 <iframe style="width: 100%; max-width: 1280px; height: 720px;" src="//www.youtube.com/embed/t7UdJrX8nGM?vq=hd720&rel=0" frameborder="0" allowfullscreen></iframe>
