@@ -28,6 +28,15 @@ body {
 	margin: 20px 20px;
 	background-color: #eeeeee;
 }
+#header {
+	text-align: center;
+	padding: 100px 0;
+	height: 300px;
+}
+#changelog {
+	float: right;
+	width: 230px;
+}
 #changelog td {
 	font-size: 12px;
 	line-height: 1.1;
@@ -42,6 +51,34 @@ body {
 .vstable {
 	background-color: #FFFEC5;
 }
+h1 {
+	font-size: 60px;
+	font-weight: normal;
+	font-family: "PT Sans Caption", "Verdana", sans-serif;
+	margin: 0 0 70px;
+}
+h1 a {
+	color: inherit;
+	text-decoration: none;
+}
+#downloads {
+	font-size: 24px;
+	line-height: 1.5;
+}
+#downloads a {
+	display: inline-block;
+	margin-bottom: 4px;
+	color: blue;
+}
+#downloads .stable {
+	background-color: blue;
+	color: white;
+	font-weight: bold;
+	padding: 2px 10px;
+}
+#downloads .installers {
+	font-size: 14px;
+}
 #cards {
     list-style-type: none;
     margin: 0 0 50px;
@@ -50,6 +87,15 @@ body {
 }
 #cards li {
     display: inline;
+}
+#cards a {
+    padding: 12pt 8pt;
+    display: inline-block;
+    width: 10em;
+    vertical-align: middle;
+}
+#cards a:hover {
+    background: #f4f4f4;
 }
 #video {
 	text-align: center;
@@ -68,93 +114,6 @@ body {
 	display: inline-block;
 	height: 20px;
 	overflow: hidden;
-}
-
-/* Redesign by BushmanK */
-
-#header {
-  height: 450px;
-  padding: 100px 200px 0 0;
-  position: relative;
-  text-align: center;
-}
-#changelog {
-  position: absolute;
-  right: 0;
-  top: 100px;
-  width: 230px;
-}
-h1 {
-  font-family: "PT Sans Caption","Verdana",sans-serif;
-  font-size: 60px;
-  font-weight: normal;
-  margin: 0 0 70px;
-}
-h1 a {
-	color: inherit;
-	text-decoration: none;
-}
-#downloads {
-  font-size: 24px;
-  line-height: 1.5;
-}
-#downloads .stable {
-  background-color: #4b6fc1;
-  background-image: url("https://josm.openstreetmap.de/browser/trunk/images/logo.png?format=raw");
-  background-position: 14px 10px;
-  background-repeat: no-repeat;
-  background-size: 47px auto;
-  border-color: white;
-  border-radius: 10px;
-  border-style: solid;
-  border-width: 3px;
-  box-shadow: 1px 1px 5px black;
-  color: white;
-  font-weight: bold;
-  margin-bottom: 15px;
-  padding: 15px 25px 15px 72px;
-}
-#downloads a {
-  display: inline-block;
-}
-a {
-  color: #365faa;
-  text-decoration: none;
-}
-a:hover, #tutorial a {
-  text-decoration: underline;
-}
-#downloads .installers {
-  font-size: 14px;
-}
-.installers a {
-  background-color: #1da53f;
-  border-color: white;
-  border-radius: 5px;
-  border-style: solid;
-  border-width: 1px;
-  box-shadow: 1px 1px 3px black;
-  color: white;
-  margin: 0 5px;
-  padding: 5px 10px;
-}
-#downloads .latest {
-  background-color: #90cea3;
-  border: 1px dashed white;
-  border-radius: 5px;
-  box-shadow: 1px 1px 2px black;
-  color: white;
-  margin-top: 20px;
-  padding: 3px 25px;
-}
-#cards a {
-  background: white none repeat scroll 0 0;
-  border: 1px solid lightgray;
-  border-radius: 5px;
-  display: inline-block;
-  padding: 12pt 8pt;
-  vertical-align: middle;
-  width: 10em;
 }
 </style>
 <script type="text/javascript" src="http://userapi.com/js/api/openapi.js?32"></script>
@@ -184,12 +143,12 @@ a:hover, #tutorial a {
 <a class="stable" href="http://gis-lab.info/programs/josm/josm-tested.jar">Загрузить стабильную версию <?=$tested ?></a>
 <?php endif ?>
 <br>
-<span class="installers">Установщики для <a href="http://gis-lab.info/programs/josm/windows/josm-setup.exe">Windows</a>
-<a href="http://gis-lab.info/programs/josm/macosx/josm-macosx.zip">Mac OS X</a>
-<a href="http://gis-lab.info/programs/josm/josm.jnlp">запустить в WebStart</a>
+<span class="installers">Установщики для <a href="http://gis-lab.info/programs/josm/windows/josm-setup.exe">Windows</a>,
+<a href="http://gis-lab.info/programs/josm/macosx/josm-macosx.zip">Mac OS X</a>;
+<a href="http://gis-lab.info/programs/josm/josm.jnlp">запустить в WebStart</a>,
 <a href="http://gis-lab.info/programs/josm/josm-tested.jar">скачать jar</a>
 </span><br>
-<a class="latest" href="http://josm.openstreetmap.de/josm-latest.jar">Версия в разработке <?=$latest ?></a>
+<a href="http://josm.openstreetmap.de/josm-latest.jar">Версия в разработке <?=$latest ?></a>
 </div>
 </div>
 
@@ -204,6 +163,10 @@ a:hover, #tutorial a {
 
 <div id="video">
 <iframe style="width: 100%; max-width: 1280px; height: 720px;" src="//www.youtube.com/embed/t7UdJrX8nGM?vq=hd720&rel=0" frameborder="0" allowfullscreen></iframe>
+</div>
+
+<div id="tutorial">
+<?php include("tutorial.html"); ?>
 </div>
 
 <div id="social">
