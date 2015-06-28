@@ -170,7 +170,7 @@ a:hover, #tutorial a {
 <div id="header">
 <div id="changelog">
 <p>Что изменилось:</p>
-<?php $maxlines = 7; include('changes.php'); ?>
+<?php $maxlines = 9; include('changes.php'); ?>
 <a href="changelog.php">...</a>
 </div>
 
