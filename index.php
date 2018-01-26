@@ -1,8 +1,8 @@
 <?php
 header("Content-Type: text/html; charset=utf-8");
 $versions = @file_get_contents("version");
-$tested = preg_match('/tested[\w .:]+(\d{4,5})/', $versions, $matches) ? $matches[1] : '0000';
-$latest = preg_match('/latest[\w .:]+(\d{4,5})/', $versions, $matches) ? $matches[1] : '0000';
+$tested = preg_match('/tested[a-z .:]+(\d{4,5})/', $versions, $matches) ? $matches[1] : '0000';
+$latest = preg_match('/latest[a-z .:]+(\d{4,5})/', $versions, $matches) ? $matches[1] : '0000';
 $user_agent = strtolower($_SERVER['HTTP_USER_AGENT']);
 if( strpos($user_agent, 'win') !== false || strpos($user_agent, 'msie') !== false )
     $platform = 'windows';
@@ -177,17 +177,18 @@ a:hover, #tutorial a {
 <h1>Начните с <a href="http://josm.openstreetmap.de/wiki/Ru%3AWikiStart">JOSM</a>!</h1>
 <div id="downloads">
 <?php if ($platform == 'windows'): ?>
-<a class="stable" href="http://gis-lab.info/programs/josm/windows/josm-setup.exe">Загрузить версию <?=$tested ?> для Windows</a>
+<a class="stable" href="https://josm.openstreetmap.de/download/windows/josm-setup.exe">Загрузить версию <?=$tested ?> для Windows</a>
 <?php elseif ($platform == 'mac'): ?>
-<a class="stable" href="http://gis-lab.info/programs/josm/macosx/josm-macosx.zip">Загрузить версию <?=$tested ?> для Mac OS X</a>
+<a class="stable" href="https://josm.openstreetmap.de/download/macosx/josm-macosx.zip">Загрузить версию <?=$tested ?> для Mac OS X</a>
 <?php else: ?>
-<a class="stable" href="http://gis-lab.info/programs/josm/josm-tested.jar">Загрузить стабильную версию <?=$tested ?></a>
+<a class="stable" href="https://josm.openstreetmap.de/josm-tested.jar">Загрузить стабильную версию <?=$tested ?></a>
 <?php endif ?>
 <br>
-<span class="installers">Установщики для <a href="http://gis-lab.info/programs/josm/windows/josm-setup.exe">Windows</a>
-<a href="http://gis-lab.info/programs/josm/macosx/josm-macosx.zip">Mac OS X</a>
-<a href="http://gis-lab.info/programs/josm/josm.jnlp">запустить в WebStart</a>
-<a href="http://gis-lab.info/programs/josm/josm-tested.jar">скачать jar</a>
+<span class="installers">Установщики для
+<a href="https://josm.openstreetmap.de/download/windows/josm-setup.exe">Windows</a>
+<a href="https://josm.openstreetmap.de/download/macosx/josm-macosx.zip">Mac OS X</a>
+<a href="https://josm.openstreetmap.de/download/josm.jnlp">запустить в WebStart</a>
+<a href="https://josm.openstreetmap.de/josm-tested.jar">скачать jar</a>
 </span><br>
 <a class="latest" href="http://josm.openstreetmap.de/josm-latest.jar">Версия в разработке <?=$latest ?></a>
 </div>
